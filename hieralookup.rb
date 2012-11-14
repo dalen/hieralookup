@@ -14,6 +14,7 @@ get '/hiera/:_host/:_key/?:_resolution_type?' do
   scope = scope.values if scope.is_a?(Puppet::Node::Facts)
   next [404, 'Host not found'] if scope == nil
   params.reject { |key, value| key.start_with? '_' }.each { |key, value| scope[key] = value }
+  scope['environment'] ||= 'production'
   res = hiera.lookup(params[:_key], nil, scope, nil, params[:_resolution_type] ? params[:_resolution_type].to_sym : :priority)
   next [404, 'Key not found'] if res == nil
   out = JSON.generate(res)
