@@ -10,7 +10,7 @@ Puppet.initialize_settings
 Puppet::Node::Facts.indirection.terminus_class = :rest
 
 get '/hiera/:_host/:_key/?:_resolution_type?' do
-  scope = YAML.load(Puppet::Node::Facts.indirection.find(params[:_host]).to_yaml)
+  scope = Puppet::Node::Facts.indirection.find(params[:_host])
   scope = scope.values if scope.is_a?(Puppet::Node::Facts)
   next [404, 'Host not found'] if scope == nil
   params.reject { |key, value| key.start_with? '_' }.each { |key, value| scope[key] = value }
