@@ -5,7 +5,7 @@ require 'puppet'
 require 'json'
 require 'sinatra'
 
-hiera = Hiera.new(:config => File.join(Hiera::Util.config_dir, 'hiera.yaml'))
+hiera = Hiera.new
 Puppet.initialize_settings
 # this can be :rest to use inventory service instead
 Puppet::Node::Facts.indirection.terminus_class = :puppetdb
