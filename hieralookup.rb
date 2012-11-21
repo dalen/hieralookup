@@ -6,6 +6,7 @@ require 'json'
 require 'sinatra'
 
 hiera = Hiera.new
+Hiera.logger='noop'
 Puppet.initialize_settings
 # this can be :rest to use inventory service instead
 Puppet::Node::Facts.indirection.terminus_class = :puppetdb
