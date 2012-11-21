@@ -7,7 +7,8 @@ require 'sinatra'
 
 hiera = Hiera.new(:config => File.join(Hiera::Util.config_dir, 'hiera.yaml'))
 Puppet.initialize_settings
-Puppet::Node::Facts.indirection.terminus_class = :rest
+# this can be :rest to use inventory service instead
+Puppet::Node::Facts.indirection.terminus_class = :puppetdb
 
 get '/hiera/:_host/:_key/?:_resolution_type?' do
   scope = Puppet::Node::Facts.indirection.find(params[:_host])
