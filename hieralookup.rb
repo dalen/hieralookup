@@ -8,6 +8,7 @@ require 'time'
 
 hiera = Hiera.new
 Hiera.logger='noop'
+Puppet.features.add(:root) { true }
 Puppet.initialize_settings
 # this can be :rest to use inventory service instead
 Puppet::Node::Facts.indirection.terminus_class = :puppetdb
