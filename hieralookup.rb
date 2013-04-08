@@ -23,7 +23,7 @@ get '/hiera/:_host/:_key/?:_resolution_type?' do
   scope['environment'] ||= 'production'
   res = hiera.lookup(params[:_key], nil, scope, nil, params[:_resolution_type] ? params[:_resolution_type].to_sym : :priority)
   next [404, 'Key not found'] if res == nil
-  out = JSON.generate(res)
+  out = res.to_json
   $? == 0 ? out : [500, out]
 end
 
