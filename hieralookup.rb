@@ -64,5 +64,5 @@ get '/hiera_reverse/:key/:value/?:_resolution_type?' do |key,value,resolution_ty
     scope = hostfacts(node, facts)
     res << node if hiera.lookup(key, [], scope, nil, resolution_type ? resolution_type.to_sym : :priority).include? value
   end
-  JSON.generate(res)
+  JSON.generate({'nodes' => res})
 end
