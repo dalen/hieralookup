@@ -1,0 +1,17 @@
+Source: hieralookup
+Section: ruby
+Priority: optional
+Maintainer: Erik Dalen <erik.gustav.dalen@gmail.com>
+DM-Upload-Allowed: yes
+Build-Depends: debhelper (>= 7.0.50~), gem2deb (>= 0.2.7~)
+Standards-Version: 3.9.2
+Homepage: http://github.com/dalen/hieralookup
+XS-Ruby-Versions: all
+
+Package: hieralookup
+Architecture: all
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: ruby | ruby-interpreter,
+ hiera (>= 1.0), ruby-json, ruby-sinatra
+Description: A REST lookup service for Hiera.
+ Allows lookups of Hiera values using a REST interface.

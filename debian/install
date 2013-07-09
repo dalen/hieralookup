@@ -1,0 +1,2 @@
+config.ru usr/share/hieralookup
+hieralookup.rb usr/share/hieralookup
