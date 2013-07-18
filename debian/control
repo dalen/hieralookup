@@ -12,6 +12,6 @@ Package: hieralookup
 Architecture: all
 XB-Ruby-Versions: ${ruby:Versions}
 Depends: ruby | ruby-interpreter,
- hiera (>= 1.0), ruby-json, ruby-sinatra
+ hiera (>= 1.0), ruby-json, ruby-sinatra, puppet
 Description: A REST lookup service for Hiera.
  Allows lookups of Hiera values using a REST interface.
