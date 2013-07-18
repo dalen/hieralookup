@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "configure" ]; then
+
+        # Set correct permissions and ownership for the application
+        if ! dpkg-statoverride --list /usr/share/hieralookup/config.ru >/dev/null 2>&1; then
+                dpkg-statoverride --update --add puppet puppet 0644 /usr/share/hieralookup/config.ru
+        fi
+fi
+
+#DEBHELPER#
