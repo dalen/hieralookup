@@ -1,0 +1,4 @@
+<VirtualHost *:80>
+  PassengerAppRoot /usr/share/hieralookup
+  DocumentRoot /usr/share/hieralookup
+</VirtualHost>
